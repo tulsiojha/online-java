@@ -14,8 +14,32 @@ interface VehicleInterface{
     String getColor();
     String getBrand();
 
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class Vehicle implements VehicleInterface{
     String color;

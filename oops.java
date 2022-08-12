@@ -5,7 +5,7 @@ class OOPS{
 
         Vehicle vehicle = new Vehicle("black", "bmw");
        
-        System.out.println();
+        System.out.println(vehicle.color);
     }
 
 }
