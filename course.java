@@ -77,10 +77,26 @@ abastraction
 ArrayList
 Exception handling
 
+//hashmaps --put--get
+import java.util.HashMap;
+HashMap<String, String> capitalCities = new HashMap<String, String>();
 
+Enums
 static class
-threading
+
+threading (Thread, Runnable)
+
 command line arguments
+
+import java.io.FileWriter;   // Import the FileWriter class
+import java.io.FileReader;   // Import the FileWriter class
+import java.io.IOException;
+
+
 debugging
+
+
+inputstream/outputstream
+HttpURLConnection
 
 

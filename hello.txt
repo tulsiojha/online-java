@@ -1,0 +1,1 @@
+If we want to make a simple calculator using Swing, we need to figure out how to convert a string to an integer. This leads us to the question – how can we convert a string to an integer?

@@ -7,6 +7,7 @@ public class Test{
     }
 }
 
+
 class Hello{
 
     Hello(){
@@ -16,9 +17,6 @@ class Hello{
 
 
     void upper(String name){
-
-        char[] sfsdf = "abc";
-
 
         char[] tempName = name.toCharArray();
         for(int i = 0; i <= name.length()-1; i++){
