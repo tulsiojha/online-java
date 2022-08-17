@@ -6,25 +6,41 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.Clip;
 
+import java.util.Scanner;
+
 class MusicPlayer{
+
+    Clip clip;
+    AudioInputStream audioInputStream;
+
+    long currentFrame = 0;
+
 
 
     public static void main(String[] args){
 
         MusicPlayer mp = new MusicPlayer();
     }
-    Clip clip;
     MusicPlayer(){
         try{
             File file = new File("music.wav");
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
-            this.clip = (Clip) AudioSystem.getClip();
+            audioInputStream = AudioSystem.getAudioInputStream(file);
+            
+            this.clip = AudioSystem.getClip();
+
             this.clip.open(audioInputStream);
-            // clip.loop(Clip.LOOP_CONTINUOUSLY);
-            // clip.setMicrosecondPosition(0);
-            this.clip.setFramePosition(0);
-            this.clip.start();
-            // System.out.println(clip.getMicrosecondLength());
+
+            this.details();
+
+            this.play(0);
+
+            Scanner scanner = new Scanner(System.in);
+            while(true){
+                
+                int choice = scanner.nextInt();
+                this.action(choice);
+            }
+
         }catch(UnsupportedAudioFileException e){
             System.out.println(e);
         }catch (LineUnavailableException e) {
@@ -34,21 +50,44 @@ class MusicPlayer{
             System.out.println(e);
         }
     }
-    
-    
 
 
-    void play(){
+    void details(){
+        System.out.println("1. pause");
+        System.out.println("2. resume");
+        System.out.println("3. stop");
+    }
 
+
+    void action(int value){
+        switch(value){
+            case 1:
+                this.pause();
+                break;
+            case 2:
+                this.resume();
+                break;
+            case 3:
+                this.stop();
+                break;
+            default:
+                System.out.println("Invalid input");
+        }
+    }
+
+    void play(long pos){
+        this.clip.setMicrosecondPosition(pos);
+        this.clip.start();
     }
 
 
     void pause(){
-
+        this.currentFrame = this.clip.getMicrosecondPosition();
+        this.clip.stop();
     }
 
     void resume(){
-
+        this.play(this.currentFrame);
     }
 
     void stop(){
