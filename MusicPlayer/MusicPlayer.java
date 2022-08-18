@@ -32,12 +32,13 @@ class MusicPlayer{
 
             this.details();
 
-            this.play(0);
+            this.play();
 
             Scanner scanner = new Scanner(System.in);
             while(true){
                 
                 int choice = scanner.nextInt();
+                System.out.println("Enter prescd sed");
                 this.action(choice);
             }
 
@@ -75,9 +76,10 @@ class MusicPlayer{
         }
     }
 
-    void play(long pos){
-        this.clip.setMicrosecondPosition(pos);
+    void play(){
+        this.clip.setMicrosecondPosition(0);
         this.clip.start();
+        
     }
 
 
@@ -87,11 +89,13 @@ class MusicPlayer{
     }
 
     void resume(){
-        this.play(this.currentFrame);
+        this.clip.setMicrosecondPosition(this.currentFrame);
+        this.clip.start();
     }
 
     void stop(){
-
+        this.clip.setMicrosecondPosition(0);
+        this.clip.stop();
     }
 
 }
