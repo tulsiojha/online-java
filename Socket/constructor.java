@@ -1,13 +1,13 @@
-class Constructor{
+class constructor{
 
     public static void main(String[] args){
         
     
-        // Vehicle vehicle = new Vehicle();
-        RoadVehicle roadVehicle = new RoadVehicle();
+        Vehicle vehicle = new Vehicle();
+        // RoadVehicle roadVehicle = new RoadVehicle();
 
-        // SeaVehicle seaVehicle = new SeaVehicle();
-    
+        SeaVehicle seaVehicle = new SeaVehicle();
+        // BndVehicle bndVehicle = new BndVehicle();
 
 
     }
@@ -15,10 +15,10 @@ class Constructor{
 }
 
 
-abstract class Vehicle{
+class Vehicle{
 
     // fields or properties
-    String color;
+    String color="red";
     String type;
     String brand = "bmw";
     String serialNo = "123";
@@ -27,7 +27,9 @@ abstract class Vehicle{
 
     Vehicle(){
         System.out.println("hello");
+        System.out.println("asd");
     }
+
 
     Vehicle(String color, String type){
        this.color = color;
@@ -64,14 +66,24 @@ class RoadVehicle extends Vehicle{
     String numberOfWheels;
 
     RoadVehicle(){
-       super("red","bike"); 
+       System.out.println(this.serialNo);
+       System.out.println(this.color);
     }
 
 }
 
-// class SeaVehicle extends Vehicle{
+class SeaVehicle extends Vehicle{
 
-//     SeaVehicle(){
-//         System.out.println(this.serialNo);
-//     }
-// }
+    // SeaVehicle(){
+    //     // System.out.println(this.serialNo);
+
+    //     // super();
+    // }
+}
+
+class BndVehicle extends Vehicle{
+
+    BndVehicle(){
+        System.out.println(this.brand);
+    }
+}

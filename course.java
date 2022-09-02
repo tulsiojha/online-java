@@ -100,3 +100,65 @@ inputstream/outputstream
 HttpURLConnection
 
 
+
+
+project:
+
+1. Student management
+
+- login
+
+- menu
+    - Add, Update, delete, view student detali, marks, subjects.
+
+    -- use OOPS
+    -- store in file as JSON
+
+
+        {
+           "students":{
+             "123":{
+                "detail":{
+                    "name":"abc",
+                    "roll no":"123",
+                    ...
+                },
+                "marks":{
+                    "1":10,
+                    "2":30
+                }
+            },
+            
+            "234":{
+                "detail":{
+                    "name":"xyz",
+                    "roll no":"234",
+                    ...
+                },
+                "marks":{
+                    "1":100,
+                    "2":300
+                }
+            }
+           },
+           
+           "subjects":{
+            "1":"Python",
+            "2":"Java"
+           }
+        }
+
+
+
+2. Syncing system
+
+- host
+    - scan files in a given folder;
+    - upload files to always data;
+    - upload progress;
+
+- client
+    - get list of files from always data;
+    - check files in local;
+    - update folder;
+

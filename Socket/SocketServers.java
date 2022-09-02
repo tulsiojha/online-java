@@ -3,8 +3,13 @@ import java.net.Socket;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.BufferedReader;
+import java.io.OutputStream;
 import java.io.InputStreamReader;
-
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+import java.io.BufferedOutputStream;
+import java.text.SimpleDateFormat;
+import java.net.InetAddress;
 
 class SocketServers{
 
@@ -12,25 +17,48 @@ class SocketServers{
     public SocketServers(){
 
        try{
-         ServerSocket ss = new ServerSocket(1000);
+        InetAddress inet = InetAddress.getByName("185.31.40.87");
+         ServerSocket ss = new ServerSocket(1000, 50, inet);
+        System.out.println("Server started: "+ss);
 
 
         Socket socket = ss.accept();
         System.out.println("Client connected: "+socket);
 
-        InputStream in = socket.getInputStream();
+        // OutputStream out = socket.getOutputStream();
+    
 
-        StringBuilder sb = new StringBuilder();
+        // InputStream in = socket.getInputStream();
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-        String read;
-        System.out.println("hello");
-        // System.out.println(br.readLine());
-        while (reader.ready()) {
+        // // StringBuilder sb = new StringBuilder();
 
-            System.out.println(reader.readLine());
+        // BufferedReader br = new BufferedReader(new InputStreamReader(in));
+        // String data;
+        // while((data = br.readLine()) != null){
+        //     System.out.println(data);
+        // }
+
+        OutputStream out = socket.getOutputStream();
+        
+        SimpleDateFormat format = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:Ss z");
+
+       String res = "HTTP/1.0 200 OK\n"
+         + "Server: HTTP server/0.1\n"
+        //  + "Date: "+format.format(new java.util.Date())+"\n"; 
+            + "Content-type: text/html; charset=UTF-8\n"
+         + "Content-Length: 28\n\n"
+         + "<html><body>Hello world</body></html>";
+        //  for(int x=0; x<1000000; x++){
+
+        //  }
+        out.write(res.getBytes());
+
+        out.flush();
+        out.close();
+
+        while(true){
+
         }
-        in.close();
 
        }catch(IOException e){
         System.out.println("Error: "+e);
